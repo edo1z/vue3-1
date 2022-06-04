@@ -6,6 +6,10 @@ const current = ref("counter");
 const currentComponent = computed(() =>
   current.value === "counter" ? Counter : Watch
 );
+const memo = ref("");
+const updatedMemo = (event: { target: HTMLButtonElement }) => {
+  memo.value = event.target.value;
+};
 </script>
 
 <template>
@@ -15,8 +19,9 @@ const currentComponent = computed(() =>
       <button @click="current = 'watch'">watch</button>
     </div>
     <KeepAlive>
-      <component :is="currentComponent" />
+      <component :is="currentComponent" @change="updatedMemo" />
     </KeepAlive>
+    <p>MEMO: {{ memo }}</p>
     <footer-contents />
   </div>
 </template>
