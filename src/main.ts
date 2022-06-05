@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import i18nPlugin from "./plugins/i18n";
 
 const app = createApp(App);
 app.component("FooterContents", {
@@ -12,5 +13,8 @@ app.component("FooterContents", {
       &copy;hoge {{year}}
     </p>
   `,
+});
+app.use(i18nPlugin, {
+  greetings: { hello: "Bonjour!" },
 });
 app.mount("#app");

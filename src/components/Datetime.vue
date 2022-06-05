@@ -14,9 +14,12 @@ const updateDatetime = () => {
   now.value = `${y}/${m}/${d} ${h}:${min}:${s}`;
 };
 updateDatetime();
+const translate: any = inject("translate");
+const hello = translate("greetings.hello");
 </script>
 
 <template>
+  {{ hello }}
   {{ userName }}-san<br />
   {{ userLocation }}<br />
   <button @click="updateDatetime">Now</button>
